@@ -1,0 +1,25 @@
+/* =========================
+   STYLE DASAR HALAMAN
+========================= */
+body {
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+}
+
+/* =========================
+   STYLE ICON
+========================= */
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
+}
+
+/* =========================
+   WARNA TAMBAHAN
+========================= */
+.teal-accent {
+    color: #008080;
+}
