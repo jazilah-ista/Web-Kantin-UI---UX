@@ -1,0 +1,26 @@
+/* Konfigurasi Objek Kustomisasi Tema Tailwind */
+@layer base {
+    :root {
+        font-family: 'Inter', sans-serif;
+    }
+}
+
+/* Kustomisasi Properti Font Icon Material Symbols */
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Tailwind Custom Configuration Script Injected Alternative via CSS Variables */
+@theme {
+    --color-navy-custom: #0A2556;
+    --color-background: #f5f7fb;
+    --color-surface: #ffffff;
+    --color-surface-container-low: #f3f3f4;
+    --color-outline-variant: #d9dce3;
+    --color-outline: #75777d;
+    --color-on-surface: #1a1c1c;
+    --color-on-surface-variant: #667085;
+
+    --font-headline-md: "Plus Jakarta Sans", sans-serif;
+    --font-body-md: "Inter", sans-serif;
+}
