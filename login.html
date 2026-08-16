@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!--Menganbil Font dari google-->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <!-- Icon -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <!-- Konfigurasi Tailwind -->
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-container": "#febf1c",
+                        "primary-container": "#0A2556",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#1a1c1c",
+                        "outline": "#75777d",
+                        "on-surface-variant": "#44474d"
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- File CSS -->
+    <link rel="stylesheet" href="login.css">
+
+    <title>Login</title>
+</head>
+
+<body class="antialiased text-white bg-primary-container">
+
+    <main class="min-h-screen flex flex-col lg:flex-row items-center justify-center gap-10 px-5 py-8 lg:px-20">
+
+        <!-- BAGIAN KIRI -->
+        <section class="flex flex-col items-center w-full lg:w-1/2">
+
+            <!-- Logo -->
+            <div class="relative mb-6">
+
+                <img src="assets/logo.png" alt="Logo Kantin Hungry"
+                    class="w-56 sm:w-64 md:w-80 lg:w-[420px] h-auto object-contain" />
+
+            </div>
+
+            <!-- Judul -->
+            <h1 class="text-2xl md:text-3xl lg:text-5xl font-bold text-secondary-container tracking-tight text-center">
+                KANTIN HUNGRY
+            </h1>
+
+            <!-- Subtitle -->
+            <div class="text-center mt-4">
+
+                <h2 class="text-xl md:text-2xl lg:text-3xl font-semibold text-white mb-2">
+                    Selamat Datang
+                </h2>
+
+                <p class="text-white/80 leading-snug max-w-[300px]">
+                    Masuk untuk melanjutkan
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- BAGIAN KANAN -->
+        <section class="w-full max-w-sm md:max-w-md lg:w-[420px]
+        bg-white/10 backdrop-blur-md
+        p-6 md:p-8
+        rounded-3xl shadow-2xl">
+
+            <!-- Form Login -->
+            <form id="loginForm" class="space-y-4"> <!--memberi jarak otomatis--> 
+
+                <!-- Email -->
+                <div class="space-y-2">
+
+                    <label class="text-sm text-white/90 ml-1" for="email">
+                        Email
+                    </label>
+
+                    <div class="relative">
+
+                        <span
+                            class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-xl">
+                            mail
+                        </span>
+
+                        <input
+                            class="w-full h-12 md:h-14 pl-12 pr-4 bg-white text-black border-none rounded-xl focus:ring-2 focus:ring-secondary-container placeholder:text-gray-400"
+                            id="email" placeholder="nama@email.com" type="email" required />
+
+                    </div>
+
+                </div>
+
+                <!-- Password -->
+                <div class="space-y-2">
+
+                    <label class="text-sm text-white/90 ml-1" for="password">
+                        Password
+                    </label>
+
+                    <div class="relative">
+
+                        <span
+                            class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-xl">
+                            lock
+                        </span>
+
+                        <input
+                            class="w-full h-12 md:h-14 pl-12 pr-4 bg-white text-black border-none rounded-xl focus:ring-2 focus:ring-secondary-container placeholder:text-gray-400"
+                            id="password" placeholder="••••••••" type="password" required />
+
+                        <!-- Tombol Toggle -->
+                        <button class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500" type="button"
+                            id="togglePassword">
+
+                            <span class="material-symbols-outlined">
+                                visibility
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- Lupa Password -->
+                <div class="flex justify-end">
+
+                    <a class="text-sm text-secondary-container hover:underline" href="#">
+                        Lupa password?
+                    </a>
+
+                </div>
+
+                <!-- Tombol Login -->
+                <button type="submit" id="btnMasuk"
+                    class="w-full h-12 md:h-14 bg-secondary-container text-[#0A2556] font-bold rounded-xl active:scale-95 transition-transform duration-100">
+
+                    Masuk
+
+                </button>
+
+            </form>
+
+            <!-- Footer -->
+            <div class="w-full text-center mt-6">
+
+                <p class="text-white/80">
+
+                    Belum punya akun?
+
+                    <a class="text-secondary-container font-bold hover:underline" href="DaftarAkun.html">
+
+                        Daftar disini
+
+                    </a>
+
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- File JavaScript -->
+    <script src="login.js"></script>
+
+</body>
+
+</html>
