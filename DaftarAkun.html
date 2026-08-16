@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet" />
+
+    <!-- Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <!-- Konfigurasi Tailwind -->
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+
+                    colors: {
+                        "primary-container": "#0A2556",
+                        "secondary-container": "#febf1c",
+                        "background": "#F7FFFF",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#1a1c1c",
+                        "on-surface-variant": "#44474d",
+                        "outline": "#75777d",
+                        "outline-variant": "#c5c6cd"
+                    },
+
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"]
+                    }
+
+                }
+            }
+        }
+    </script>
+
+    <!-- File CSS -->
+    <link rel="stylesheet" href="daftar.css">
+
+    <title>Daftar Akun</title>
+</head>
+
+<body class="bg-background min-h-screen text-on-surface">
+
+    <main class="min-h-screen flex flex-col lg:flex-row"> <!--mengatur susunan vertikal dan horinzontal-->
+
+        <!-- =========================
+             BAGIAN KIRI
+        ========================== -->
+        <section class="hidden lg:flex lg:w-1/2 bg-primary-container 
+            items-center justify-center p-10 relative overflow-hidden"> <!--bagian kiri disembunyikann secara default, saat layar besar bagian kiri muncul-->
+
+            <div class="text-center z-10">
+
+                <!-- Logo -->
+                <img src="assets/logo.png" alt="Logo Kantin Hungry"
+                    class="w-72 xl:w-[420px] mx-auto mb-8 object-contain" />
+
+                <!-- Judul -->
+                <h1 class="text-4xl xl:text-5xl font-bold text-secondary-container mb-4">
+                    KANTIN HUNGRY
+                </h1>
+
+                <!-- Deskripsi -->
+                <p class="text-white/80 text-lg max-w-md leading-relaxed">
+                    Daftarkan akun Anda dan mulai menikmati pengalaman memesan makanan dengan cepat dan mudah.
+                </p>
+
+            </div>
+
+            <!-- Background Effect -->
+            <div
+                class="absolute w-[500px] h-[500px] bg-secondary-container/10 rounded-full blur-3xl top-[-100px] left-[-100px]">
+            </div>
+
+            <div class="absolute w-[400px] h-[400px] bg-white/5 rounded-full blur-3xl bottom-[-100px] right-[-100px]">
+            </div>
+
+        </section>
+
+        <!-- =========================
+             BAGIAN KANAN
+        ========================== -->
+        <section class="w-full lg:w-1/2 flex items-center justify-center px-5 py-10">
+
+            <div class="w-full max-w-md md:max-w-lg
+                bg-white shadow-2xl rounded-3xl
+                p-6 md:p-8 lg:p-10">
+
+                <!-- Header Mobile -->
+                <div class="lg:hidden mb-8">
+
+                    <div class="flex items-center gap-3 mb-3">
+
+                        <!-- Tombol kembali -->
+                        <button id="btnBackLogin">
+
+                            <span class="material-symbols-outlined text-4xl text-primary-container">
+                                arrow_back
+                            </span>
+
+                        </button>
+
+                        <h1 class="text-3xl font-bold text-primary-container">
+                            Daftar Akun
+                        </h1>
+
+                    </div>
+
+                    <p class="text-on-surface-variant opacity-80 leading-relaxed">
+                        Lengkapi data diri Anda untuk mulai memesan makanan di Kantin Hungry.
+                    </p>
+
+                </div>
+
+                <!-- Header Desktop -->
+                <div class="hidden lg:block mb-8">
+
+                    <h1 class="text-4xl font-bold text-primary-container mb-3">
+                        Daftar Akun
+                    </h1>
+
+                    <p class="text-on-surface-variant opacity-80 leading-relaxed">
+                        Lengkapi data diri Anda untuk mulai memesan makanan di Kantin Hungry.
+                    </p>
+
+                </div>
+
+                <!-- =========================
+                     FORM PENDAFTARAN
+                ========================== -->
+                <div class="space-y-4">
+
+                    <!-- Nama -->
+                    <div class="space-y-1">
+
+                        <label class="text-sm font-semibold text-on-surface-variant ml-1">
+                            Nama Lengkap
+                        </label>
+
+                        <input id="nama" type="text" placeholder="Masukkan nama lengkap"
+                            class="w-full h-12 md:h-14 px-4 bg-white border border-outline-variant rounded-xl focus:ring-2 focus:ring-secondary-container focus:border-secondary-container outline-none transition-all placeholder:text-outline" />
+                            <!--memakai id karena agar js bisa mengambil data input-->
+
+                    </div>
+
+                    <!-- Email -->
+                    <div class="space-y-1">
+
+                        <label class="text-sm font-semibold text-on-surface-variant ml-1">
+                            Email
+                        </label>
+
+                        <input id="email" type="email" placeholder="nama@email.com"
+                            class="w-full h-12 md:h-14 px-4 bg-white border border-outline-variant rounded-xl focus:ring-2 focus:ring-secondary-container focus:border-secondary-container outline-none transition-all placeholder:text-outline" />
+
+                    </div>
+
+                    <!-- Telepon -->
+                    <div class="space-y-1">
+
+                        <label class="text-sm font-semibold text-on-surface-variant ml-1">
+                            Nomor Telepon
+                        </label>
+
+                        <input id="telepon" type="tel" placeholder="08xxxxxxxxxx"
+                            class="w-full h-12 md:h-14 px-4 bg-white border border-outline-variant rounded-xl focus:ring-2 focus:ring-secondary-container focus:border-secondary-container outline-none transition-all placeholder:text-outline" />
+
+                    </div>
+
+                    <!-- Password -->
+                    <div class="space-y-1">
+
+                        <label class="text-sm font-semibold text-on-surface-variant ml-1">
+                            Password
+                        </label>
+
+                        <div class="relative">
+
+                            <input id="password" type="password" placeholder="••••••••"
+                                class="w-full h-12 md:h-14 px-4 pr-14 bg-white border border-outline-variant rounded-xl focus:ring-2 focus:ring-secondary-container focus:border-secondary-container outline-none transition-all placeholder:text-outline" />
+
+                            <!-- Toggle Password = menampilkan dan menyembunyikan  -->
+                            <button type="button" id="togglePassword"
+                                class="absolute right-4 top-1/2 -translate-y-1/2 text-outline">
+
+                                <span class="material-symbols-outlined">
+                                    visibility
+                                </span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Konfirmasi Password -->
+                    <div class="space-y-1">
+
+                        <label class="text-sm font-semibold text-on-surface-variant ml-1">
+                            Konfirmasi Password
+                        </label>
+
+                        <div class="relative">
+
+                            <input id="konfirmasiPassword" type="password" placeholder="••••••••"
+                                class="w-full h-12 md:h-14 px-4 pr-14 bg-white border border-outline-variant rounded-xl focus:ring-2 focus:ring-secondary-container focus:border-secondary-container outline-none transition-all placeholder:text-outline" />
+
+                            <!-- Toggle Konfirmasi Password -->
+                            <button type="button" id="toggleKonfirmasiPassword"
+                                class="absolute right-4 top-1/2 -translate-y-1/2 text-outline">
+
+                                <span class="material-symbols-outlined">
+                                    visibility
+                                </span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Role -->
+                    <div class="space-y-1">
+
+                        <label class="text-sm font-semibold text-on-surface-variant ml-1">
+                            Role
+                        </label>
+
+                        <div class="relative">
+
+                            <select id="role"
+                                class="w-full h-12 md:h-14 px-4 bg-white border border-outline-variant rounded-xl appearance-none focus:ring-2 focus:ring-secondary-container focus:border-secondary-container outline-none transition-all text-on-surface">
+
+                                <option disabled selected>
+                                    Pilih Role
+                                </option>
+
+                                <option value="admin">
+                                    Admin
+                                </option>
+
+                                <option value="penjual">
+                                    Penjual
+                                </option>
+
+                            </select>
+
+                            <span
+                                class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline pointer-events-none">
+                                expand_more
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Tombol Daftar -->
+                    <div class="pt-4">
+
+                        <button type="button" id="btnDaftar"
+                            class="w-full h-12 md:h-14 bg-primary-container text-white text-lg font-bold rounded-xl hover:opacity-90 active:scale-95 transition-all shadow-sm">
+
+                            Daftar
+
+                        </button>
+
+                    </div>
+
+                    <!-- Link Login -->
+                    <p class="text-center text-on-surface-variant pt-4">
+
+                        Sudah memiliki akun?
+
+                        <a href="login.html" class="text-secondary-container font-bold hover:underline">
+
+                            Masuk di sini
+
+                        </a>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- File JavaScript -->
+    <script src="daftar.js"></script>
+
+</body>
+
+</html>
