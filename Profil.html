@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Profil Saya - Kantin Hungry</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="Profil.css">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+
+            theme: {
+                extend: {
+
+                    colors: {
+                        background: "#F7FFFF",
+                        surface: "#ffffff",
+                        primary: "#0A2556",
+                        "primary-container": "#0A2556",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e2e2e2",
+                        "outline-variant": "#c5c6cd",
+                        "on-background": "#1a1c1c",
+                        "on-surface": "#1a1c1c",
+                        "on-surface-variant": "#44474d"
+                    },
+
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                        jakarta: ["Plus Jakarta Sans", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+
+</head>
+
+<body class="bg-background text-on-background min-h-screen font-sans">
+
+    <!-- SIDEBAR -->
+    <aside
+        class="hidden lg:flex fixed left-0 top-0 h-screen w-72 bg-primary flex-col p-8 text-white z-50">
+
+        <!-- LOGO -->
+        <div>
+            <h1 class="text-3xl font-bold text-yellow-400">
+                Kantin Hungry
+            </h1>
+        </div>
+
+        <!-- MENU -->
+        <nav class="mt-16 space-y-3">
+
+            <!-- HOME -->
+            <button type="button" onclick="goHome()"
+                class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/10 transition-all">
+
+                <span class="material-symbols-outlined">
+                    home
+                </span>
+
+                <span>
+                    Beranda
+                </span>
+
+            </button>
+
+            <!-- PESANAN -->
+            <button type="button" onclick="goMenuKedua()"
+                class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/10 transition-all">
+
+                <span id="sidebarIconMenuKedua" class="material-symbols-outlined">
+                    shopping_cart
+                </span>
+
+                <span id="sidebarTextMenuKedua">
+                    Pesanan
+                </span>
+
+            </button>
+
+            <!-- STATUS -->
+            <button type="button" onclick="window.location.href='CekStatus.html'"
+                class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/10 transition-all">
+
+                <span class="material-symbols-outlined">
+                    notifications
+                </span>
+
+                <span>
+                    Status
+                </span>
+
+            </button>
+
+            <!-- AKUN -->
+            <button type="button" onclick="window.location.href='Profil.html'"
+                class="w-full flex items-center gap-3 bg-white/10 px-4 py-3 rounded-xl transition-all">
+
+                <span class="material-symbols-outlined">
+                    person
+                </span>
+
+                <span>
+                    Akun
+                </span>
+
+            </button>
+
+        </nav>
+
+    </aside>
+
+    <!-- HEADER -->
+    <header
+        class="fixed top-0 left-0 lg:left-72 lg:w-[calc(100%-18rem)] w-full h-16 lg:h-20 bg-white border-b border-outline-variant z-40 flex items-center justify-between px-5 lg:px-10">
+
+        <!-- LEFT -->
+        <div class="flex items-center gap-3">
+
+            <!-- BUTTON BACK -->
+            <button type="button" id="btnBack" class="lg:hidden text-on-surface">
+
+                <span class="material-symbols-outlined">
+                    arrow_back
+                </span>
+
+            </button>
+
+            <!-- TITLE -->
+            <h1 class="text-2xl lg:text-3xl font-bold text-on-surface font-jakarta">
+                Profil Saya
+            </h1>
+
+        </div>
+
+        <!-- NOTIF -->
+        <button type="button" onclick="window.location.href='CekStatus.html'">
+
+            <span class="material-symbols-outlined text-on-surface">
+                notifications
+            </span>
+
+        </button>
+
+    </header>
+
+    <!-- MAIN -->
+    <main class="pt-24 lg:pt-28 pb-28 lg:pb-10 px-5 lg:px-10 lg:ml-72">
+
+        <!-- PROFILE -->
+        <section
+            class="bg-white border border-outline-variant rounded-2xl p-6 md:p-8 flex flex-col items-center mb-8 shadow-sm">
+
+            <div class="relative mb-4">
+
+                <!-- FOTO -->
+                <img id="profileImage"
+                    src="assets/default-profile.png"
+                    
+                    class="w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-outline-variant object-cover">
+
+                <!-- INPUT FILE -->
+                <input type="file" id="uploadFoto" accept="image/*" class="hidden">
+
+                <!-- BUTTON -->
+                <button type="button" id="btnTambahFoto"
+                    class="absolute bottom-0 right-0 w-10 h-10 bg-primary rounded-full flex items-center justify-center border-2 border-white text-white shadow-sm">
+
+                    <span class="material-symbols-outlined">
+                        add
+                    </span>
+
+                </button>
+
+            </div>
+
+            <!-- USER -->
+            <div class="text-center">
+
+                <h2 id="namaUser"
+                    class="text-[26px] font-bold text-on-surface font-jakarta">
+                </h2>
+
+                <p id="emailUser"
+                    class="text-base text-on-surface-variant mt-1">
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- INFORMASI -->
+        <section
+            class="bg-white border border-outline-variant rounded-2xl p-6 md:p-8 shadow-sm">
+
+            <h3 class="text-black font-semibold uppercase tracking-wide mb-6">
+                Informasi Akun
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+                <!-- NAMA -->
+                <div class="flex flex-col gap-1">
+
+                    <label class="text-sm text-on-surface-variant px-1">
+                        Nama Lengkap
+                    </label>
+
+                    <div
+                        class="h-14 w-full bg-surface-container-lowest border border-outline-variant rounded-xl flex items-center px-4 gap-3">
+
+                        <span class="material-symbols-outlined text-on-surface-variant">
+                            person
+                        </span>
+
+                        <input id="inputNama"
+                            class="bg-transparent outline-none border-none w-full text-base cursor-default"
+                            readonly type="text">
+
+                    </div>
+
+                </div>
+
+                <!-- EMAIL -->
+                <div class="flex flex-col gap-1">
+
+                    <label class="text-sm text-on-surface-variant px-1">
+                        Email
+                    </label>
+
+                    <div
+                        class="h-14 w-full bg-surface-container-lowest border border-outline-variant rounded-xl flex items-center px-4 gap-3">
+
+                        <span class="material-symbols-outlined text-on-surface-variant">
+                            mail
+                        </span>
+
+                        <input id="inputEmail"
+                            class="bg-transparent outline-none border-none w-full text-base cursor-default"
+                            readonly type="email">
+
+                    </div>
+
+                </div>
+
+                <!-- TELEPON -->
+                <div class="flex flex-col gap-1">
+
+                    <label class="text-sm text-on-surface-variant px-1">
+                        No. Telepon
+                    </label>
+
+                    <div
+                        class="h-14 w-full bg-surface-container-lowest border border-outline-variant rounded-xl flex items-center px-4 gap-3">
+
+                        <span class="material-symbols-outlined text-on-surface-variant">
+                            call
+                        </span>
+
+                        <input id="inputTelepon"
+                            class="bg-transparent outline-none border-none w-full text-base cursor-default"
+                            readonly type="tel">
+
+                    </div>
+
+                </div>
+
+                <!-- PASSWORD -->
+                <div class="flex flex-col gap-1">
+
+                    <label class="text-sm text-on-surface-variant px-1">
+                        Password Baru
+                    </label>
+
+                    <div
+                        class="h-14 w-full bg-surface-container-lowest border border-outline-variant rounded-xl flex items-center px-4 gap-3">
+
+                        <span class="material-symbols-outlined text-on-surface-variant">
+                            lock
+                        </span>
+
+                        <input id="passwordBaru"
+                            class="bg-transparent outline-none border-none w-full text-base"
+                            type="password"
+                            placeholder="Masukkan password baru">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- BUTTON -->
+            <div class="mt-8 flex flex-col md:flex-row gap-4">
+
+                <button type="button" id="btnSimpanPassword"
+                    class="flex-1 h-12 bg-primary text-white rounded-xl font-semibold">
+
+                    Simpan Password
+
+                </button>
+
+                <button type="button" id="btnLogout"
+                    class="flex-1 h-12 bg-primary text-white rounded-xl font-semibold flex items-center justify-center gap-3">
+
+                    <span class="material-symbols-outlined">
+                        logout
+                    </span>
+
+                    Keluar Akun
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- MOBILE NAVBAR -->
+<nav
+    class="lg:hidden fixed bottom-0 left-0 w-full flex items-center bg-white h-20 shadow-sm border-t border-outline-variant z-50">
+
+    <!-- HOME -->
+    <button type="button"
+        onclick="goHome()"
+        class="flex-1 h-full flex flex-col items-center justify-center text-primary font-bold">
+
+        <span class="material-symbols-outlined"
+            style="font-variation-settings:'FILL'1">
+            home
+        </span>
+
+        <span class="text-[11px] font-semibold">
+            Home
+        </span>
+
+    </button>
+
+    <!-- OPERASIONAL -->
+    <button type="button"
+        onclick="goMenuKedua()"
+        class="flex-1 h-full flex flex-col items-center justify-center text-primary font-bold">
+
+        <span class="material-symbols-outlined"
+            style="font-variation-settings:'FILL'1">
+            store
+        </span>
+
+        <span class="text-[11px] font-semibold">
+            Operasional
+        </span>
+
+    </button>
+
+    
+    <!-- STATUS -->
+    <button type="button"
+        onclick="window.location.href='CekStatus.html'"
+        class="flex-1 h-full flex flex-col items-center justify-center text-on-surface-variant">
+
+        <span class="material-symbols-outlined">
+            notifications
+        </span>
+
+        <span class="text-[11px] font-semibold">
+            Status
+        </span>
+
+    </button>
+
+    <!-- AKUN -->
+    <button type="button"
+        onclick="window.location.href='Profil.html'"
+        class="flex-1 h-full flex flex-col items-center justify-center text-on-surface-variant">
+
+        <span class="material-symbols-outlined">
+            account_circle
+        </span>
+
+        <span class="text-[11px] font-semibold">
+            Akun
+        </span>
+
+    </button>
+
+</nav>
+    <!-- JAVASCRIPT -->
+    <script src="Profil.js"></script>
+
+</body>
+
+</html>
