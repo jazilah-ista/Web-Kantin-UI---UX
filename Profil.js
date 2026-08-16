@@ -197,6 +197,6 @@ btnLogout.addEventListener("click", () => {
     localStorage.removeItem("roleUser");
 
     // KEMBALI KE LOGIN
-    window.location.href = "Login.html";
+    window.location.href = "login.html";
 
 });
