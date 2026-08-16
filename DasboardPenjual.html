@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Dashboard Penjual
+    </title>
+
+    <!-- TAILWIND -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- FONT -->
+    <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@300;400;600&display=swap">
+
+    <!-- ICON -->
+    <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
+
+    <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="dashboardPenjual.css">
+
+    <!-- TAILWIND CONFIG -->
+    <script>
+
+        tailwind.config = {
+
+            darkMode: "class",
+
+            theme: {
+
+                extend: {
+
+                    colors: {
+
+                        "primary-container": "#0A2556",
+                        "secondary-container": "#febf1c",
+                        "background": "#F7FFFF",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#eeeeee",
+                        "outline-variant": "#c5c6cd",
+                        "on-surface": "#1a1c1c",
+                        "on-surface-variant": "#44474d",
+                        "primary": "#0A2556"
+
+                    },
+
+                    fontFamily: {
+
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Plus Jakarta Sans"]
+
+                    },
+
+                    fontSize: {
+
+                        "label-sm": [
+                            "12px",
+                            {
+                                lineHeight: "16px",
+                                fontWeight: "600"
+                            }
+                        ],
+
+                        "headline-md": [
+                            "22px",
+                            {
+                                lineHeight: "28px",
+                                fontWeight: "600"
+                            }
+                        ],
+
+                        "body-md": [
+                            "16px",
+                            {
+                                lineHeight: "24px",
+                                fontWeight: "400"
+                            }
+                        ],
+
+                        "display-lg": [
+                            "30px",
+                            {
+                                lineHeight: "38px",
+                                letterSpacing: "-0.02em",
+                                fontWeight: "700"
+                            }
+                        ]
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    </script>
+
+</head>
+
+<body class="min-h-screen bg-white lg:pb-0"> <!-- padding bawah 0 -->
+
+    <!-- SIDEBAR -->
+    <aside
+        class="hidden lg:flex fixed left-0 top-0 h-screen w-72 bg-primary-container flex-col p-8 text-white">
+
+        <!-- LOGO -->
+        <div>
+
+            <h1 class="text-3xl font-bold text-yellow-400">
+                    Kantin Hungry
+                </h1>
+
+        </div>
+
+        <!-- MENU -->
+        <nav class="mt-16 space-y-4"> <!---Memberi jarak vertikal otomatis-->
+
+            <!-- HOME -->
+            <button
+                onclick="goHome()"
+                class="w-full flex items-center gap-3 bg-white/10 px-4 py-3 rounded-xl">
+
+                <span class="material-symbols-outlined">
+                    home
+                </span>
+
+                <span>
+                    Beranda
+                </span>
+
+            </button>
+
+            <!-- OPERASIONAL -->
+            <button
+                onclick="goMenuKedua()"
+                class="w-full flex items-center gap-3 hover:bg-white/10 px-4 py-3 rounded-xl transition-all">
+
+                <span class="material-symbols-outlined">
+                    store
+                </span>
+
+                <span>
+                    Operasional
+                </span>
+
+            </button>
+
+            <!-- STATUS -->
+            <button
+                onclick="window.location.href='CekStatus.html'"
+                class="w-full flex items-center gap-3 hover:bg-white/10 px-4 py-3 rounded-xl transition-all">
+
+                <span class="material-symbols-outlined">
+                    notifications
+                </span>
+
+                <span>
+                    Status
+                </span>
+
+            </button>
+
+            <!-- AKUN -->
+            <button
+                onclick="window.location.href='Profil.html'"
+                class="w-full flex items-center gap-3 hover:bg-white/10 px-4 py-3 rounded-xl transition-all">
+
+                <span class="material-symbols-outlined">
+                    person
+                </span>
+
+                <span>
+                    Akun
+                </span>
+
+            </button>
+
+        </nav>
+
+    </aside>
+
+    <!-- HEADER -->
+    <header
+        class="bg-white flex items-center justify-between w-full lg:left-72 lg:w-[calc(100%-18rem)] px-5 lg:px-10 h-16 lg:h-20 sticky top-0 z-40 border-b border-gray-200"> <!--sticky header tetap telihat saat scroll-->
+
+        <!-- LEFT -->
+        <div class="flex items-center gap-3">
+
+            <!-- BACK -->
+            <button
+                id="btnBack"
+                class="lg:hidden">
+
+                <span
+                    class="material-symbols-outlined text-[28px] text-primary cursor-pointer">
+
+                    arrow_back
+
+                </span>
+
+            </button>
+
+            <!-- TITLE -->
+            <span class="text-2xl font-bold text-primary">
+                Kantin Hungry
+            </span>
+
+        </div>
+
+        <!-- RIGHT -->
+        <div class="flex items-center gap-4">
+
+            <!-- NOTIF -->
+            <button
+                onclick="window.location.href='CekStatus.html'">
+
+                <span
+                    class="material-symbols-outlined hover:opacity-80 transition-opacity cursor-pointer">
+
+                    notifications
+
+                </span>
+
+            </button>
+
+        </div>
+
+    </header>
+
+    <!-- CONTENT -->
+    <main class="px-5 lg:px-10 lg:ml-72 pt-6 lg:pt-10 pb-28">
+
+        <div class="max-w-7xl mx-auto space-y-10">
+
+            <!-- DASHBOARD -->
+            <section>
+
+                <div
+                    class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+
+                    <div>
+
+                        <h2
+                            class="text-sm font-semibold text-on-surface-variant uppercase tracking-widest">
+
+                            DASHBOARD
+
+                        </h2>
+
+                        <h1
+                            class="text-3xl lg:text-5xl font-bold mt-1">
+
+                            Halo,
+                            <span id="namaUser">
+
+                                Penjual
+
+                            </span>
+
+                        </h1>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            
+            <!-- RINGKASAN -->
+            <section class="space-y-4">
+
+                <h3 class="text-2xl font-semibold">
+                    Ringkasan Penjualan
+                </h3>
+
+                <div
+                    class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5"> <!--Mengatur card statistik secara responsif-->
+
+                    <!-- TOTAL -->
+                    <div
+                        class="bg-white p-5 rounded-xl border border-outline-variant shadow-sm">
+
+                        <p class="text-sm text-on-surface-variant">
+                            Total Pesanan
+                        </p>
+
+                        <div class="flex items-baseline gap-2 mt-2">
+
+                            <span
+                                class="text-3xl font-bold text-primary">
+
+                                20
+
+                            </span>
+
+                            <span
+                                class="px-2 py-1 bg-blue-100 text-blue-700 text-[10px] font-bold rounded-full">
+
+                                Total
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <!-- PENDING -->
+                    <div
+                        class="bg-white p-5 rounded-xl border border-outline-variant shadow-sm">
+
+                        <p class="text-sm text-on-surface-variant">
+                            Pending
+                        </p>
+
+                        <div class="flex items-baseline gap-2 mt-2">
+
+                            <span
+                                class="text-3xl font-bold text-primary">
+
+                                8
+
+                            </span>
+
+                            <span
+                                class="px-2 py-1 bg-orange-100 text-orange-700 text-[10px] font-bold rounded-full">
+
+                                Pending
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <!-- DIPROSES -->
+                    <div
+                        class="bg-white p-5 rounded-xl border border-outline-variant shadow-sm">
+
+                        <p class="text-sm text-on-surface-variant">
+                            Diproses
+                        </p>
+
+                        <div class="flex items-baseline gap-2 mt-2">
+
+                            <span
+                                class="text-3xl font-bold text-primary">
+
+                                2
+
+                            </span>
+
+                            <span
+                                class="px-2 py-1 bg-indigo-100 text-indigo-700 text-[10px] font-bold rounded-full">
+
+                                Diproses
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <!-- SELESAI -->
+                    <div
+                        class="bg-white p-5 rounded-xl border border-outline-variant shadow-sm">
+
+                        <p class="text-sm text-on-surface-variant">
+                            Selesai
+                        </p>
+
+                        <div class="flex items-baseline gap-2 mt-2">
+
+                            <span
+                                class="text-3xl font-bold text-primary">
+
+                                10
+
+                            </span>
+
+                            <span
+                                class="px-2 py-1 bg-green-100 text-green-700 text-[10px] font-bold rounded-full">
+
+                                Selesai
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+                    <!-- STATUS -->
+            <section class="space-y-4">
+
+                
+
+                <div class="space-y-4 pb-4">
+
+                    <!-- ITEM -->
+                    <div
+                        class="bg-white p-5 rounded-2xl border border-outline-variant flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 shadow-sm hover:shadow-md transition-all">
+
+                        <div class="flex items-center gap-4">
+
+                            <div
+                                class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center">
+
+                                <span
+                                    class="material-symbols-outlined text-primary-container">
+
+                                    shopping_cart
+
+                                </span>
+
+                            </div>
+
+                            <div>
+
+                                <p class="font-bold text-primary">
+                                    #ORD-8821
+                                </p>
+
+                                <p
+                                    class="text-sm text-on-surface-variant">
+
+                                    Nasi Goreng Spesial
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <span
+                            class="px-3 py-1 bg-green-500 text-white text-[10px] font-bold rounded-full w-fit">
+
+                            Selesai
+
+                        </span>
+
+                    </div>
+
+                    <!-- ITEM -->
+                    <div
+                        class="bg-white p-5 rounded-2xl border border-outline-variant flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 shadow-sm hover:shadow-md transition-all">
+
+                        <div class="flex items-center gap-4">
+
+                            <div
+                                class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center">
+
+                                <span
+                                    class="material-symbols-outlined text-primary-container">
+
+                                    shopping_cart
+
+                                </span>
+
+                            </div>
+
+                            <div>
+
+                                <p class="font-bold text-primary">
+                                    #ORD-8825
+                                </p>
+
+                                <p
+                                    class="text-sm text-on-surface-variant">
+
+                                    Es Teh Manis (2x)
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <span
+                            class="px-3 py-1 bg-orange-100 text-orange-700 text-[10px] font-bold rounded-full w-fit">
+
+                            Pending
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+   <!-- MOBILE NAVBAR -->
+<nav
+    class="lg:hidden fixed bottom-0 left-0 w-full flex items-center bg-white h-20 shadow-sm border-t border-outline-variant z-50">
+
+    <!-- HOME -->
+    <button type="button"
+        onclick="goHome()"
+        class="flex-1 h-full flex flex-col items-center justify-center text-primary font-bold">
+
+        <span class="material-symbols-outlined"
+            style="font-variation-settings:'FILL'1">
+            home
+        </span>
+
+        <span class="text-[11px] font-semibold">
+            Home
+        </span>
+
+    </button>
+
+    <!-- OPERASIONAL -->
+    <button type="button"
+        onclick="goMenuKedua()"
+        class="flex-1 h-full flex flex-col items-center justify-center text-primary font-bold">
+
+        <span class="material-symbols-outlined"
+            style="font-variation-settings:'FILL'1">
+            store
+        </span>
+
+        <span class="text-[11px] font-semibold">
+            Operasional
+        </span>
+
+    </button>
+
+    
+
+    <!-- STATUS -->
+    <button type="button"
+        onclick="window.location.href='CekStatus.html'"
+        class="flex-1 h-full flex flex-col items-center justify-center text-on-surface-variant">
+
+        <span class="material-symbols-outlined">
+            notifications
+        </span>
+
+        <span class="text-[11px] font-semibold">
+            Status
+        </span>
+
+    </button>
+
+    <!-- AKUN -->
+    <button type="button"
+        onclick="window.location.href='Profil.html'"
+        class="flex-1 h-full flex flex-col items-center justify-center text-on-surface-variant">
+
+        <span class="material-symbols-outlined">
+            account_circle
+        </span>
+
+        <span class="text-[11px] font-semibold">
+            Akun
+        </span>
+
+    </button>
+
+</nav>
+
+    <!-- JAVASCRIPT -->
+    <script src="dashboardPenjual.js"></script>
+
+</body>
+
+</html>
