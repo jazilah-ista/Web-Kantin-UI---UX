@@ -1,0 +1,25 @@
+/* Pengaturan dasar font dan halaman */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Setelan ikon Google Material Symbols */
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
+}
+
+/* Gaya indikator aktif pada tab menu */
+.active-tab {
+    border-bottom: 3px solid #0A2556;
+    color: #0A2556;
+    font-weight: 700;
+}
+
+/* Gaya default tombol tab */
+.tab-button {
+    color: #75777d;
+}
