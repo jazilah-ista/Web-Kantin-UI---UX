@@ -1,0 +1,31 @@
+/* Konfigurasi jenis huruf dasar */
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Konfigurasi render Google Material Icons */
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+}
+
+/* Menyembunyikan item pesanan yang tidak lolos filter */
+.hidden-order {
+  display: none;
+}
+
+/* Status menu aktif pada sidebar */
+.sidebar-active {
+  background-color: #0A2556;
+  color: white;
+}
+
+/* Sembunyikan navigasi bawah ketika resolusi masuk layar komputer */
+@media (min-width: 1024px) {
+  .mobile-nav {
+    display: none;
+  }
+}
